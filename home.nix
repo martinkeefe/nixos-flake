@@ -25,12 +25,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-#   programs.git = {
-#     enable = true;
-#     userName = "Martin Keefe";
-#     userEmail = "martin.keefe@outlook.com";
-#     extraConfig = {
-#       init.defaultBranch = "main";
-#     };
-#   };
+  programs.git = {
+    enable = true;
+    userName = "Martin Keefe";
+    userEmail = "martin.keefe@outlook.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
 }
