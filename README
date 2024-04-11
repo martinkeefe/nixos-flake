@@ -1,0 +1,4 @@
+Assuming this directory is /home/martin/nixos-flake
+
+  cp /etc/nixos/hardware-configuration.nix ~/nixos-flake
+  sudo ln -s /home/martin/nixos-flake/flake.nix /etc/nixos/flake.nix
