@@ -88,9 +88,9 @@
     description = "Martin Keefe";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
+      #firefox
+      #kate
+      #thunderbird
     ];
   };
 
@@ -99,10 +99,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # wget
-    git
-  ];
+#   environment.systemPackages = with pkgs; [
+#     # wget
+#     git
+#   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
