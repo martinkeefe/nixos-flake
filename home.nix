@@ -1,36 +1,39 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: {
+  nixpkgs.config = {
+    allowUnfree = true;
+    # Workaround for https://github.com/nix-community/home-manager/issues/2942
+    allowUnfreePredicate = _: true;
+  };
 
-{
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "martin";
-  home.homeDirectory = "/home/martin";
+  home = {
+    username = "martin";
+    homeDirectory = "/home/martin";
 
-  home.packages = with pkgs; [
-    firefox
-    kate
-    htop
-  ];
+    packages = with pkgs; [
+      firefox
+      kate
+      htop
+    ];
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "23.11";
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = "23.11";
+  };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "Martin Keefe";
-    userEmail = "martin.keefe@outlook.com";
-    extraConfig = {
-      init.defaultBranch = "main";
+    git = {
+      enable = true;
+      userName = "Martin Keefe";
+      userEmail = "martin.keefe@outlook.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
+
+    vscode = import ./vscode.nix { inherit pkgs; };
   };
 }
